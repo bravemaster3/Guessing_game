@@ -1,12 +1,15 @@
 library(shiny)
 
-ui <- fluidPage(
-  numericInput("guess_number", 
-               label=h3("Guess a number between 1 and 10"),
-               value=0),
-  actionButton("BtnPlay","PLAY"),
-  uiOutput("result"),
-  uiOutput("generated_num")
+ui <- fixedPage(
+  column(12, 
+         numericInput("guess_number", 
+                      label=h3("Guess a number between 1 and 10"),
+                      value=0),
+         actionButton("BtnPlay","PLAY"),
+         uiOutput("result"),
+         uiOutput("generated_num"),
+         align="center"
+         )
 )
 
 server <- function(input, output, session) {
