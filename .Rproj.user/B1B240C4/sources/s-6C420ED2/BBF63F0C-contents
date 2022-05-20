@@ -1,0 +1,42 @@
+#http://shiny.rstudio-staging.com/articles/css.html?fbclid=IwAR05yMZBYOhUYm6ljHQ5Gyvc1hb_DvtRbJCOEusHYq4tTmkRupaT7S_0BAg#:~:text=If%20you%20have%20CSS%20saved,save%20the%20file%20in%20www%20
+#https://bootswatch.com/
+
+bs_card <- function(card_div_class="accordion",
+                    card_item_class="accordion-item",
+                    card_button_class="accordion-button",
+                    card_body_class="accordion-body",
+                    header_text, title_text, body_text) {#font_color, bg_color, header_text, title_text, body_text) {
+  
+  shiny::div(
+    class=card_div_class, #glue::glue("card text-{font_color} bg-{bg_color} mb-3"), 
+    style="width: 50%;", 
+    
+    shiny::div(
+      class=card_item_class,
+                shiny::HTML(
+                  glue(
+                    '<button class={card_button_class} type="button" data-bs-toggle="collapse" data-bs-target="#collapseBody" aria-expanded="true" aria-controls="collapseBody">
+                      {header_text}
+                     </button>'
+                  )
+                ),
+
+    
+      shiny::div(class=card_body_class, id="collapseBody",
+                 
+                 shiny::h5(
+                   title_text
+                 ), 
+                 
+                 shiny::p(
+                   body_text
+                 )
+                 )
+      
+    )
+    
+  )
+  
+}
+
+linebreaks <- function(n){HTML(strrep(br(), n))}

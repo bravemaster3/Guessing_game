@@ -1,0 +1,22 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1653023750566.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "DEBC244D",
+    "lastKnownWriteTime" : 1653026715,
+    "last_content_update" : 1653026715921,
+    "path" : "D:/personal/projets/github/Guessing_game/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+        "cursorPosition" : "25,28",
+        "scrollLine" : "17"
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
