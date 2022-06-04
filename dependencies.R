@@ -1,0 +1,101 @@
+#http://shiny.rstudio-staging.com/articles/css.html?fbclid=IwAR05yMZBYOhUYm6ljHQ5Gyvc1hb_DvtRbJCOEusHYq4tTmkRupaT7S_0BAg#:~:text=If%20you%20have%20CSS%20saved,save%20the%20file%20in%20www%20
+#https://bootswatch.com/
+
+bs_card <- function(card_div_class="accordion",
+                    card_item_class="accordion-item",
+                    card_button_class="accordion-button",
+                    card_body_class="accordion-body",
+                    header_text, title_text, body_text) {#font_color, bg_color, header_text, title_text, body_text) {
+  
+  shiny::div(
+    class=card_div_class, #glue::glue("card text-{font_color} bg-{bg_color} mb-3"), 
+    style="width: 50%;", 
+    
+    shiny::div(
+      class=card_item_class,
+                shiny::HTML(
+                  glue(
+                    '<button class={card_button_class} type="button" data-bs-toggle="collapse" data-bs-target="#collapseBody" aria-expanded="true" aria-controls="collapseBody">
+                      {header_text}
+                     </button>'
+                  )
+                ),
+
+    
+      shiny::div(class=card_body_class, id="collapseBody",
+                 
+                 shiny::h5(
+                   title_text
+                 ), 
+                 
+                 shiny::p(
+                   body_text
+                 )
+                 )
+      
+    )
+    
+  )
+  
+}
+
+linebreaks <- function(n){HTML(strrep(br(), n))}
+
+
+##Creating a module that can be reused twice
+singleGuessUI <- function(id){
+  ns <- NS(id)
+  column(12, 
+         numericInput(ns("guess_number"), 
+                      label=h1("Guess a number between 1 and 10"#,
+                               # style = "font-family: 'Lobster', cursive;
+                               # font-weight: 500; line-height: 1.1;
+                               # color: #4d3a7d;"
+                      ),
+                      value=0,
+                      width='50%'),actionButton(ns("BtnPlay"),"PLAY", width="25%", icon("play"), style='padding: 0%; font-size:300%; color:#228B22; webkit-tap-highlight-color: transparent;'),
+         linebreaks(2),
+         uiOutput(ns("result")),
+         align="center"
+  )
+}
+
+singleGuessServer <- function(id, n=1){
+  moduleServer(id, 
+               function(input, output, session){
+                 ns <- session$ns
+                 outcome_final <- reactiveVal(0)
+                 
+                 counter <- reactiveVal(0)
+                 observeEvent(input$BtnPlay,{
+                   
+                   counter(counter()+1)
+                   gen_number <- sample(1:10,1)
+                   outcome_single <- as.integer(gen_number==input$guess_number)
+                   outcome_current <- outcome_final()+outcome_single
+                   outcome_final(outcome_current)
+                   result <- ifelse(rep(outcome_single,2), c("Win!!!","green"), c("Loose!!!","red"))
+                   
+                   if(counter() < n){
+                     score_text <- glue("Your current score is {outcome_final()}/{counter()}")
+                     color_score <- "black"
+                   } else if(counter() == n){
+                     score_text <- glue("Your FINAL score is {outcome_final()}/{n}")
+                     color_score <- "green"
+                     counter(0) #resets the counter to 0
+                     outcome_final(0) #resets the outcome_final reactive value to 0
+                   }
+                   
+                   output$result <- renderUI(
+                     bs_card(
+                       header_text = "Here comes your outcome", 
+                       title_text = glue("The generated number is: {gen_number}"), 
+                       body_text = div(h1(result[1], style=glue('color:{result[2]}')),
+                                       h5(score_text, style = glue('color:{color_score}'))
+                       )
+                     )
+                   )
+                 })
+                 }
+  )
+}

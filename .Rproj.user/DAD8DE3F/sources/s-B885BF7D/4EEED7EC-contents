@@ -1,0 +1,7 @@
+bs_card(
+  font_color = "black", 
+  bg_color = "warning", 
+  header_text = "Appsilon Conf 2022", 
+  title_text = "Check it out!", 
+  body_text = "We just built an awesome Bootstrap card in Shiny"
+)
