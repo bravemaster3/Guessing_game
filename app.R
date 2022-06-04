@@ -15,7 +15,18 @@ ui <- fixedPage(
              singleGuessUI("guess1")
     ),
     tabPanel("Guess 10",
-             singleGuessUI("guess10"))
+             singleGuessUI("guess10")
+             ),
+    tabPanel("Guess n",
+             fluidRow(
+               column(3),
+               column(6,
+                      sliderInput("n_guess", "Select number of guess",
+                                  min=1, max=100, value=5, step=1),
+                      align="center")
+             ),
+             singleGuessUI("guessn")
+             )
   )
 )
 
@@ -23,7 +34,9 @@ server <- function(input, output, session) {
   
   singleGuessServer("guess1", n=1)
   singleGuessServer("guess10", n=10)
-  
+  observeEvent(input$n_guess, {
+      singleGuessServer("guessn", n=input$n_guess)
+    })
 }
 
 
