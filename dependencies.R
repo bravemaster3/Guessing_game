@@ -95,7 +95,7 @@ singleGuessServer <- function(id, n=1){
                        )
                      )
                    )
-                 })
+                 }, ignoreInit = TRUE)
                  }
   )
 }
