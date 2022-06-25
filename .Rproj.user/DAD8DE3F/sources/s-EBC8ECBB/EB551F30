@@ -1,26 +1,26 @@
 {
-    "id": "7E935346",
-    "path": "C:/BRAVE/personal/Projets/github/Guessing_game/dependencies.R",
-    "project_path": "dependencies.R",
+    "id": "EB551F30",
+    "path": "C:/BRAVE/personal/Projets/github/Guessing_game/app.R",
+    "project_path": "app.R",
     "type": "r_source",
     "hash": "0",
     "contents": "",
     "dirty": false,
-    "created": 1656093183112.0,
+    "created": 1656154453387.0,
     "source_on_save": false,
-    "relative_order": 2,
+    "relative_order": 1,
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "85,83",
-        "scrollLine": "76"
+        "cursorPosition": "30,62",
+        "scrollLine": "23"
     },
     "folds": "",
-    "lastKnownWriteTime": 1656094577,
+    "lastKnownWriteTime": 1656173157,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1656094577054,
+    "last_content_update": 1656173157515,
     "read_only": false,
     "read_only_alternatives": []
 }

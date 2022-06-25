@@ -9,19 +9,19 @@ bs_card <- function(card_div_class="accordion",
   
   shiny::div(
     class=card_div_class, #glue::glue("card text-{font_color} bg-{bg_color} mb-3"), 
-    style="width: 50%;", 
+    style="width: 80%;", 
     
     shiny::div(
       class=card_item_class,
-                shiny::HTML(
-                  glue(
-                    '<button class={card_button_class} type="button" data-bs-toggle="collapse" data-bs-target="#collapseBody" aria-expanded="true" aria-controls="collapseBody">
+      shiny::HTML(
+        glue(
+          '<button class={card_button_class} type="button" data-bs-toggle="collapse" data-bs-target="#collapseBody" aria-expanded="true" aria-controls="collapseBody">
                       {header_text}
                      </button>'
-                  )
-                ),
-
-    
+        )
+      ),
+      
+      
       shiny::div(class=card_body_class, id="collapseBody",
                  
                  shiny::h5(
@@ -31,7 +31,7 @@ bs_card <- function(card_div_class="accordion",
                  shiny::p(
                    body_text
                  )
-                 )
+      )
       
     )
     
@@ -52,8 +52,8 @@ singleGuessUI <- function(id){
                                # font-weight: 500; line-height: 1.1;
                                # color: #4d3a7d;"
                       ),
-                      value=0,
-                      width='50%'),actionButton(ns("BtnPlay"),"PLAY", width="25%", icon("play"), style='padding: 0%; font-size:300%; color:#228B22; webkit-tap-highlight-color: transparent;'),
+                      value=NULL,
+                      width='80%'),actionButton(ns("BtnPlay"),"PLAY", width="50%", icon("play"), style='padding: 0%; font-size:300%; color:#228B22; webkit-tap-highlight-color: transparent;'),
          linebreaks(2),
          uiOutput(ns("result")),
          align="center"
@@ -96,6 +96,8 @@ singleGuessServer <- function(id, n=1){
                      )
                    )
                  }, ignoreInit = TRUE)
-                 }
+                 
+                 updateNumericInput(inputId = "guess_number", value=NULL)
+               }
   )
 }

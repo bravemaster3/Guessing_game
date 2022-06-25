@@ -5,7 +5,7 @@ library(bslib)
 
 source("dependencies.R")
 
-ui <- fixedPage(
+ui <- fillPage(
   tags$head(tags$link(rel = "stylesheet", type = "text/css", href = "sketchy.css")),#"quartz.css" / "morph.css" / "sketchy.css" /"darkly.css"
   theme = bslib::bs_theme(
     version = 5  # use Bootstrap version 5
@@ -27,7 +27,17 @@ ui <- fixedPage(
              ),
              singleGuessUI("guessn")
              )
-  )
+  ),
+  tags$footer(tags$a(href="https://github.com/bravemaster3/Guessing_game", "View Source Code On Github"), align = "center", style = "
+              position: fixed;
+              bottom:0;
+              margin : 0;
+              width:100%;
+              height:45px;   /* Height of the footer */
+              color: white;
+              padding-top: 10px;
+              background-color: #caf0f8;
+              z-index: 2")
 )
 
 server <- function(input, output, session) {

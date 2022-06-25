@@ -52,7 +52,7 @@ singleGuessUI <- function(id){
                             # font-weight: 500; line-height: 1.1;
                             # color: #4d3a7d;"
                    ),
-                   placeholder = "e.g. 5",
+                   placeholder = 0,
                    width='80%'),actionButton(ns("BtnPlay"),"PLAY", width="50%", icon("play"), style='padding: 0%; font-size:300%; color:#228B22; webkit-tap-highlight-color: transparent;'),
          linebreaks(2),
          uiOutput(ns("result")),
@@ -70,7 +70,7 @@ singleGuessServer <- function(id, n=1){
                  observeEvent(input$BtnPlay,{
                    
                    updateTextInput(inputId = "guess_number",value="",placeholder = input$guess_number)
-                   if(!is.na(as.numeric(input$guess_number))){
+                   if(is.numeric(as.numeric(input$guess_number))){
                      counter(counter()+1)
                      gen_number <- sample(1:10,1)
                      outcome_single <- as.integer(gen_number==as.numeric(input$guess_number))
@@ -94,15 +94,6 @@ singleGuessServer <- function(id, n=1){
                          title_text = glue("The generated number is: {gen_number}"), 
                          body_text = div(h1(result[1], style=glue('color:{result[2]}')),
                                          h5(score_text, style = glue('color:{color_score}'))
-                         )
-                       )
-                     )
-                   } else{
-                     output$result <- renderUI(
-                       bs_card(
-                         header_text = "Here comes your outcome", 
-                         title_text = "Invalid number!", 
-                         body_text = div(h1("Please try again with a valid number", style='color:red')
                          )
                        )
                      )
