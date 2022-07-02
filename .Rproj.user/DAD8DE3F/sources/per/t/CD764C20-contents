@@ -76,7 +76,7 @@ singleGuessServer <- function(id, n=1){
                      outcome_single <- as.integer(gen_number==as.numeric(input$guess_number))
                      outcome_current <- outcome_final()+outcome_single
                      outcome_final(outcome_current)
-                     result <- ifelse(rep(outcome_single,2), c("Win!!!","green"), c("Loose!!!","red"))
+                     result <- ifelse(rep(outcome_single,2), c("Won!!!","green"), c("Lost!!!","red"))
                      
                      if(counter() < n){
                        score_text <- glue("Your current score is {outcome_final()}/{counter()}")

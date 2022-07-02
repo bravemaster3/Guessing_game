@@ -3,7 +3,7 @@
     "path": "C:/BRAVE/personal/Projets/github/Guessing_game/dependencies.R",
     "project_path": "dependencies.R",
     "type": "r_source",
-    "hash": "3398606115",
+    "hash": "2726302805",
     "contents": "",
     "dirty": false,
     "created": 1656154467043.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "71,54",
-        "scrollLine": "63"
+        "cursorPosition": "78,89",
+        "scrollLine": "77"
     },
     "folds": "",
-    "lastKnownWriteTime": 1656169087,
+    "lastKnownWriteTime": 1656720280,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1656169087023,
+    "last_content_update": 1656720280149,
     "read_only": false,
     "read_only_alternatives": []
 }

@@ -1,0 +1,14 @@
+name: Guessing_game
+title: Guessing_game
+username:
+account: nosdames
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 6547518
+bundleId: 6042563
+url: https://nosdames.shinyapps.io/Guessing_game/
+when: 1656173258.72332
+lastSyncTime: 1656173258.72332
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Dockerfile|www/darkly.css|www/morph.css|www/quartz.css
